@@ -1,0 +1,955 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+}
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.wallpaperflare.com/static/582/593/306/made-in-abyss-regu-made-in-abyss-riko-made-in-abyss-two-wallpaper.jpg') center/cover ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+	    transition: background 0.5s
+
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            
+            top: 0; /* Aligner le haut de la section sur le haut de la fenêtre */
+            
+            
+            transition: opacity 0.5s ease-in-out;
+	    text-align: center;
+        }
+
+        #content {
+            display: none;
+            margin-top: 20px;
+position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.7); /* Fond transparent pour le contenu */
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 60%; /* Ajustez la largeur maximale selon vos besoins */
+      width: 100%;
+overflow-y: auto; /* Activer la barre de défilement verticale si nécessaire */
+overflow-x: hidden;
+      box-sizing: border-box;
+      max-height: 80%; /* Limitez la hauteur du conteneur pour éviter qu'il ne dépasse l'écran */
+    }
+
+
+
+
+
+#unlock-form {
+background-color: rgba(255, 255, 255, 0.7);
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+border-radius: 10px;
+padding: 20px;
+
+        }
+
+
+
+        #unlock-form, #lock-button-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #password-input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #unlock-button, #lock-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+	    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        }
+
+        #unlock-button {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        #lock-button {
+            background-color: #FF0000;
+            color: #fff;
+        }
+
+        #error-message {
+            color: #FF0000;
+            display: none;
+        }
+
+        .bounce {
+            animation: bounce 0.5s ease;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(0);
+            }
+            40% {
+                transform: translateX(-15px);
+            }
+            60% {
+                transform: translateX(15px);
+            }
+        }
+    </style>
+    <script>
+        function unlockContent() {
+            var container = document.getElementById("container");
+            var errorMessage = document.getElementById("error-message");
+            var password = document.getElementById("password-input").value;
+            if (password.toLowerCase() === "x") {
+                container.style.opacity = 0;
+                setTimeout(function() {
+                    document.getElementById("unlock-form").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    container.style.opacity = 1;
+		    document.body.style.background = "url('https://c.wallhere.com/photos/5a/c4/Made_in_Abyss_Nanachi_Made_in_Abyss_Mitty_Made_in_Abyss_environment-1781881.jpg!d') center top/cover fixed";
+                    errorMessage.style.display = "none";
+                }, 500); // 500ms is the duration of the animation
+            } else {
+                errorMessage.style.display = "block";
+                errorMessage.classList.add("bounce");
+                setTimeout(function() {
+                    errorMessage.classList.remove("bounce");
+                }, 500); // 500ms is the duration of the animation
+            }
+        }
+
+        function lockContent() {
+            var container = document.getElementById("container");
+            container.style.opacity = 0;
+            setTimeout(function() {
+                document.getElementById("content").style.display = "none";
+                document.getElementById("unlock-form").style.display = "block";
+                container.style.opacity = 1;
+		document.body.style.background = "url('https://www.wallpaperflare.com/static/582/593/306/made-in-abyss-regu-made-in-abyss-riko-made-in-abyss-two-wallpaper.jpg') center/cover";
+                document.getElementById("password-input").value = "";
+                document.getElementById("error-message").style.display = "none";
+            }, 500); // 500ms is the duration of the animation
+        }
+    </script>
+    <title>Page Verrouillée</title>
+</head>
+<body>
+
+	    
+
+
+<div id="container">
+    <div id="unlock-form">
+	    <h1>Contenu Verrouillé</h1>	</br>
+        <label for="password-input">Mot de passe :</label>
+        <input type="password" id="password-input" name="password" required>
+        <button id="unlock-button" onclick="unlockContent()">Déverrouiller</button>
+        <p id="error-message" class="bounce">Mot de passe incorrect. Veuillez réessayer.</p>
+    </div>
+
+
+
+
+
+
+    <div id="content">
+        <div id="lock-button-container">
+            <button id="lock-button" onclick="lockContent()">Reverrouiller</button>
+
+
+
+
+
+
+
+
+
+
+	
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+<style>
+.conteneur {
+text-align: center;
+}
+
+.centrer-image {
+display: inline-block;
+}
+
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+background-size: cover;
+background-position: center;
+background-repeat: repeat;
+}
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+nav {
+background-color: transparent;
+overflow-x: hidden;
+}
+nav a {
+display: inline-block;
+color: red;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+nav a:hover {
+background-color: #ddd;
+color: black;
+}
+</style>
+
+
+</head>
+<body>
+<div class="titremia">
+<h1 class="ombre-texte"><span style="font-size:
+150px;">Le manga : Made in abyss</h1>
+</div>
+<div class="conteneur">
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/thum
+b/d/d4/MadeInAbyss_logo.svg/langfr-1280px-
+MadeInAbyss_logo.svg.png" alt="Descrition de l'image"
+width="100%">
+</div>
+<h1></h1>
+<nav>
+<a href="#section4"><strong><span style="font-size:
+30px;">Résumé de l'histoire</a> </br>
+<a href="#section2"><strong><span style="font-size:
+30px;">Personnages</a> </br>
+<a href="#section3"><strong><span style="font-size:
+30px;">Avis sur l'oeuvre</a> </br>
+<a href="#section1"><strong><span style="font-size:
+30px;">Achats des mangas</a> </br>
+<a href="#section7"><strong><span style="font-size:
+30px;">Illustrations du mangas</a>
+</nav>
+<h4>Ces titres sont interactifs, cliquez dessus !!! <br>
+Tout ce qui intéragi avec la souris peut être cliqué (Zoom, ...)</h4>
+<h4></h4>
+<section id="section4">
+<h2><span style="font-size: 40px;">Résumé de
+l'histoire</h2>
+<h4><strong><span style="font-size: 30px;">"Made in Abyss"
+est un manga japonais écrit et illustré par Akihito Tsukushi.
+L'histoire se déroule dans un monde fantastique où un
+gigantesque gouffre, appelé l'Abysse, s'étend profondément
+sous terre. L'Abysse est peuplée de créatures étranges et
+dangereuses, ainsi que de mystères inexplorés. De plus, une
+malédiction empêche les personnes qui s'y aventure, de
+remonter. Selon l'altitude dans le gouffre, la malédiction est
+plus ou moins puissante. <br>
+Une jeune orpheline courageuse nommée Riko, dont la mère a
+disparu dans l'Abysse, découvre un mystérieux garçon
+robotique aux bords de l'Abysse, appelé Legu, qui semble être
+doté de pouvoirs étonnants. Elle l'emmène à son orphelinat.
+Celui-ci semble avoir perdu la mémoire à son réveil. Ensemble,
+ils décident de s'aventurer dans l'Abysse pour retrouver la
+mère de Riko, savoir d'où vient Legu et découvrir les secrets
+cachés des profondeurs. <br>
+Au fur et à mesure que Riko et Legu progressent dans l'Abysse,
+ils font face à des défis mortels, rencontrent d'autres
+explorateurs et découvrent l'environnement, des reliques.
+L'histoire mélange l'exploration aventureuse, avec des
+éléments de science-fiction et d'horreur, créant ainsi un
+monde riche en détails et en mystères. <br>
+"Made in Abyss" est apprécié pour ses personnages
+complexes, son intrigue captivante et son atmosphère
+unique.(Actuellement, la version de l’oeuvre en français se
+termine au Tome 11)</h4>
+
+</section>
+<section id="section2">
+<h2><span style="font-size: 40px;">Personnages</h2>
+</br>
+    <style>
+    .image-containerp {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .character-container-Riko,
+    .character-container-Legu,
+    .character-container-Nanachi,
+    .character-container-Faputa {
+      cursor: pointer;
+      max-width: 100%; /* Ajustez la largeur maximale de l'image */
+      text-align: center;
+      margin-bottom: 20px; /* Ajustez la marge entre les images */
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .character-container-Riko img,
+    .character-container-Legu img,
+    .character-container-Nanachi img,
+    .character-container-Faputa img {
+      width: 50%;
+      height: auto;
+      border-radius: 25px;
+      margin: 30px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .character-container-Riko img:hover,
+    .character-container-Legu img:hover,
+    .character-container-Nanachi img:hover,
+    .character-container-Faputa img:hover {
+      transform: scale(1.1); /* Ajustez la valeur pour le niveau de zoom */
+    }
+
+    .text-container {
+      max-height: 0;
+      margin-align: center;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+
+    .text-content {
+      width: 100%; /* Ajustez la largeur maximale du texte */
+      margin: 0 auto; /* Centre le texte dans le conteneur */
+      text-align: left; /* Alignement du texte à gauche */
+    }
+  </style>
+  
+
+  <div class="image-containerp">
+    <div class="character-container-Riko" onclick="toggleText('text-container-4')">
+      <img src="https://orig00.deviantart.net/d45a/f/2017/226/c/1/riko___made_in_abyss_by_alienitynera-dbk0r58.png" alt="Riko">
+      <div id="text-container-4" class="text-container">
+        <div class="text-content">
+          <p class="ombre-texte"><span style="font-size: 27px;">
+          <u>Nom :</u> Riko <br>
+          <u>Âge :</u> 12 ans <br>
+          <u>Apparence :</u> Riko a des cheveux courts et blonds, des
+          yeux vert, et elle porte généralement l'uniforme d'apprentie
+          exploratrice, qui est une tenue adaptée pour l'exploration de
+          l'Abysse. <br>
+          <u>Origine :</u> Riko est une jeune orpheline qui vit dans la
+          ville de Ōsu, située près du bord du gigantesque gouffre appelé
+          l'Abysse. Sa mère, Lyza, était une célèbre exploratrice qui a
+          disparu lors d'une expédition dans les couches les plus
+          profondes de l'Abysse. <br>
+          <u>Personnalité :</u> Riko a une détermination et un courage
+          exceptionnel. Malgré sa jeunesse, elle possède une passion
+          profonde pour l'exploration de l'Abysse, par son désir de
+          retrouver sa mère. Riko est curieuse et aventureuse, prête à
+          affronter les nombreux dangers de l'Abysse pour atteindre ses
+          objectifs.</p>
+        </div>
+      </div>
+    </div>
+<div class="character-container-Legu" onclick="toggleText('text-container-2')">
+      <img src="https://i.pinimg.com/originals/7d/3d/0f/7d3d0fffd0cc721b3ebc379d56274c25.jpg" alt="Legu">
+      <div id="text-container-2" class="text-container">
+        <div class="text-content">
+          <p class="ombre-texte"><span style="font-size: 27px;">
+          <u>Nom :</u> Legu <br>
+          <u>Âge :</u> inconnu <br>
+          <u>Apparence :</u> Legu est un mystérieux garçon robotique
+          avec une apparence humanoïde. Il a des cheveux chatains et
+          des yeux rouges. Sa peau métallique et son apparence
+          générale suggèrent clairement qu'il n'est pas entièrement
+          humain. <br>
+          <u>Origine :</u> L'origine et le passé de Legu sont entourés de
+          mystère. Il est découvert par Riko aux abords de l'Abysse et
+          semble avoir perdu la mémoire sur qui il est et d'où il vient.
+          <br>
+          <u>Capacités :</u> Legu possède des capacités surhumaines,
+          dont une force physique impressionnante, des bras extensibles
+          et des armes énergétiques intégrées dans ses mains. Ces
+          pouvoirs font de lui un atout précieux pour Riko dans leur
+          exploration périlleuse de l'Abysse. <br>
+          <u>Personnalité :</u> Malgré son apparence robotique, Legu
+          développe une personnalité empathique et attachante. Il est
+          souvent préoccupé par le bien-être de Riko et est déterminé à
+          l'aider à atteindre ses objectifs, qui sont sa découverte de son
+          passé et de ses pouvoirs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="character-container-Nanachi" onclick="toggleText('text-container-1')">
+      <img src="https://s1.zerochan.net/Nanachi.(Made.in.Abyss).600.2360665.jpg" alt="Nanachi">
+      <div id="text-container-1" class="text-container">
+        <div class="text-content">
+          <p class="ombre-texte"><span style="font-size: 27px;">
+          <u>Nom :</u> Nanachi <br>
+          <u>Âge :</u> 13 ans <br>
+          <u>Apparence :</u> Nanachi est une créature
+          anthropomorphique avec une fourrure et des oreilles pointues.
+          Avant de devenir ce qu'elle est, Nanachi était humaine.
+          L'Abysse lui a fait subir une transformation qui a changé sa
+          nature physique, dans l'oeuvre on appelle une ombre. <br>
+          <u>Capacités :</u> Nanachi possède une connaissance
+          approfondie de l'Abysse, de ses dangers et de ses mystères.
+          Elle possède également des compétences médicales
+          exceptionnelles, acquises lors de sa vie antérieure en tant
+          qu'apprentie scientifique. <br>
+          <u>Personnalité :</u> Nanachi est généralement calme et
+          réservée, mais elle est toujours présente pour apporter son
+          aide. Elle est souvent hantée par son passé douloureux. La
+          présence de Riko et Legu, la rend heureuse. <br>
+          <u>Relation avec Riko et Legu :</u> Nanachi rencontre Riko et
+          Legu au cours de leur voyage dans l'Abysse. Nanachi devient
+          une alliée précieuse. Sa propre expérience traumatisante dans
+          l'Abysse crée un lien unique avec Riko et Legu, et elle joue un
+          rôle important dans leur quête. <br>
+          <u>Histoire personnelle :</u> Nanachi et Meethy, sa meilleure
+          amie, ont subi des experiences de transformation sur la
+          malédiction, où Meethy à rendu l'âme et Nanachi s'est
+          métamorphosée en ombre.</p>
+        </div>
+      </div>
+    </div>
+    <div class="character-container-Faputa" onclick="toggleText('text-container-3')">
+      <img src="https://lohas.nicoseiga.jp/thumb/11054710i?1666096474" alt="Faputa">
+      <div id="text-container-3" class="text-container">
+        <div class="text-content">
+          <p class="ombre-texte"><span style="font-size: 27px;">
+          <u>Nom :</u> Faputa (Surnommé la princesse immortelle) <br>
+          <u>Âge :</u> plus de 1200 ans <br>
+          <u>Histoire personnelle :</u> Depuis sa naissance, Faputa a le
+          besoin irrépressible de détruire le village des ombres et ceux
+          qui y habitent, pour venger sa mère, Ilmyuui, une petite fille
+          descendue dans l'Abysse avec les Ganja (groupe
+          d’explorateur). Elle a été transformée en ombre par trois
+          "berceaux des désirs", une des nombreuses reliques de
+          l’Abysse. Le village des ombres se situe en réalité à l'intérieur
+          du corps déformé d'Ilmyuui. Faputa est, également, ami avec
+          un robot nommé Gabu, qui était endommagé après sa
+          réparation. Ce robot accompagna Faputa peu après sa
+          naissance, jusqu’à ce qu’elle décide de rejoindre Riko, Legu, et
+          Nanachi dans l’exploration de l’Abysse. D’autre part, elle a
+          connu Legu, avant qu'il soit amnésique. <br>
+          <u>Apparence :</u> Ce personnage de l’Abysse possède 4 bras
+          dotés de griffes. Elle a, également, de nombreuses queues, un
+          pelage blanc, ainsi que des yeux orangés. Elle est une des
+          nombreuses créatures de l'Abysse. <br>
+          <u>Personnalité :</u> Faputa a une personnalité instable. Elle a
+          un comportement sauvage. Elle parle d’une manière simpliste
+          et primitive, en parlant d’elle à la troisième personne, et ne
+          communiquant qu’avec de courtes phrases parfois difficiles à
+          comprendre. Elle les termine souvent par "sosu". Quand elle a
+          rencontré Legu, il lui as dit "Soit plus raffinée quand tu parles
+          !". Dans l'histoire de "Made in abyss", finir ses phrases par
+          "sosu" est une marque de respect (ce mot appartient à la
+          langue du village des ombres).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleText(containerId) {
+      const textContainer = document.getElementById(containerId);
+      if (textContainer.style.maxHeight) {
+        textContainer.style.maxHeight = null;
+      } else {
+        textContainer.style.maxHeight = textContainer.scrollHeight + 'px';
+      }
+    }
+  </script>
+
+
+</section>
+<section id="section3">
+
+<h2><span style="font-size: 40px;">Avis de l'oeuvre</h2>
+<p class="ombre-texte"><strong><span style="font-size: 30px;">Depuis déjà un
+certain nombre d'années, je suis passionné par l'univers des
+mangas. Récemment, j'ai découvert un manga du nom de
+Made in abyss. L'histoire de cette œuvre correspond
+particulièrement à mes goûts : aventure, fantastique, groupe
+d’amis, suspense, combats, survie et bien d'autre. Mon entourage m'a
+conseillé de choisir "Made in abyss" comme thème pour ce
+travail. J’ai pu regarder l’adaptation de "Made in abyss" en
+animé sur le site web <a href="https://anime-
+sama.fr/catalogue/made-in-abyss/">Anime sama</a>. Avant
+de regarder une série, je regarde toujours les génériques pour
+me convaincre. J'ai donc regarder les génériques des deux
+saisons de "Made in abyss", qui m'ont convaincu de regarder.
+<br> <br>
+Générique de la saison 1 <br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e91G8m9uM_0" frameborder="90" allowfullscreen></iframe>
+<br> <br>
+Générique de la saison 2 <br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K81W056O8q0" frameborder="90" allowfullscreen></iframe>
+</span></p>
+
+</section>
+<section id="section1">
+<div class="saut"><h2><span style="font-size: 40px;">Achats des
+mangas</h2></div>
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+
+
+.image-container {
+  overflow: hidden;
+  width: calc(40% - 2.4%);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+
+  margin-right: 3%; /* Modifier l'espace entre les images côte à côte */
+  margin-left: auto; /* Centrer les images */
+  margin-right: auto; /* Centrer les images */
+}
+
+.image-container:hover {
+  transform: scale(1.1);
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 25px;
+}
+
+.image-pair-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10%;
+}
+
+.saut {
+ margin-bottom: 9%;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Première paire d'images -->
+  <div class="image-pair-container">
+    <div class="image-container">
+  <a href="https://www.amazon.fr/Made-Abyss-1-Akihito-
+Tsukushi/dp/2377171176/ref=sr_1_1?crid=HOHKXVLZL21R&ke
+ywords=made+in+abyss+tome+1&qid=1704963665&sprefix=m
+ade+in+abyss%2Caps%2C82&sr=8-1">
+    <img class="zoom-effect" src="https://m.media-amazon.com/images/I/71QfLkCJauL._SL1404_.jpg"  alt="Tome 1 de made in abyss">
+</a>
+    </div>
+
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T02-Akihito-TSUKUSHI
+/dp/2377171249/ref=sr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C
+3%91&crid=1DJILX3V15NDL&keywords=made+in+abyss+tome+2&qid=17071585
+34&sprefix=made+in+abyss+tome+2%2Caps%2C175&sr=8-1">
+        <img class="zoom-effect" src="https://m.media-amazon.com/images/I/715VD-PKYwL._SL1408_.jpg" alt="Tome 2 de made in abyss">
+      </a>
+    </div>
+  </div>
+
+  <div class="image-pair-container">
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T03-Akihito-
+TSUKUSHI/dp/2377171451/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=2Z3V592W3LT8W&
+keywords=made+in+abyss+tome+3&qid=1704964062&sprefix
+=made+in+abyss+tome+3%2Caps%2C64&sr=8-1">
+    <img class="zoom-effect" src="https://m.media-amazon.com/images/I/71Kuk05EyUL._SL1389_.jpg" alt="Tome 3 de made in abyss">
+      </a>
+    </div>
+
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T04-Akihito-
+TSUKUSHI/dp/2377171745/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=DNGHXO9VPIK6&k
+eywords=made+in+abyss+tome+4&qid=1704964107&sprefix=
+made+in+abyss+tome+4%2Caps%2C128&sr=8-1">
+<img class="zoom-effect" src="https://m.media-amazon.com/images/I/71CYy37JFSL._SL1437_.jpg" alt="Tome 4 de made in abyss">
+      </a>
+    </div>
+  </div>
+
+  <div class="image-pair-container">
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T05-Akihito-
+TSUKUSHI/dp/2377172008/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=3VLUORA95CUA4&
+keywords=made+in+abyss+tome+5&qid=1704964134&sprefix
+=made+in+abyss+tome+5%2Caps%2C204&sr=8-1">
+    <img class="zoom-effect" src="https://m.media-amazon.com/images/I/71-lCMG4MgL._SL1416_.jpg" alt="Tome 5 de made in abyss">
+</a>
+    </div>
+
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T06-Akihito-
+TSUKUSHI/dp/2377172253/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=25QJEFJSCU0DP&ke
+ywords=made+in+abyss+tome+6&qid=1704964159&sprefix=m
+ade+in+abyss+tome+6%2Caps%2C168&sr=8-1">
+<img class="zoom-effect" src="https://m.media-amazon.com/images/I/71p1kf3T88L._SL1404_.jpg" alt="Tome 6 de made in abyss">
+</a>
+    </div>
+  </div>
+
+  <div class="image-pair-container">
+    <div class="image-container">
+     <a href="https://www.amazon.fr/MADE-ABYSS-T07-Akihito-
+TSUKUSHI/dp/2377172490/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=3O8272T5P3N7Q&k
+eywords=made+in+abyss+tome+7&qid=1704964207&sprefix=
+made+in+abyss+tome+7%2Caps%2C162&sr=8-1">
+    <img class="zoom-effect" src="https://m.media-amazon.com/images/I/71Rz-EriWVL._SL1408_.jpg" alt="Tome 7 de made in abyss">
+</a>
+    </div>
+
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T08-Akihito-
+TSUKUSHI/dp/2377172873/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=3FP7RDSKW73HY&
+keywords=made+in+abyss+tome+8&qid=1704964235&sprefix
+=made+in+abyss+tome+8%2Caps%2C114&sr=8-1">
+<img class="zoom-effect" src="https://m.media-amazon.com/images/I/71pHnq6SODL._SL1420_.jpg" alt="Tome 8 de made in abyss">
+</a>
+    </div>
+  </div>
+
+  <div class="image-pair-container">
+    <div class="image-container">
+     <a href="https://www.amazon.fr/Made-Abyss-T09-Akihito-
+TSUKUSHI/dp/2377173667/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=IEKBMB5AB217&ke
+ywords=made+in+abyss+tome+9&qid=1704964470&sprefix=m
+ade+in+abyss+tome+9%2Caps%2C106&sr=8-1">
+    <img class="zoom-effect" src="https://m.media-amazon.com/images/I/612ryhni8BL._SL1439_.jpg" alt="Tome 9 de made in abyss">
+</a>
+    </div>
+
+    <div class="image-container">
+       <a href="https://www.amazon.fr/MADE-ABYSS-T10-Akihito-
+TSUKUSHI/dp/2377174078/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=17LVLEF2L51KK&ke
+ywords=made+in+abyss+tome+10&qid=1704964496&sprefix=
+made+in+abyss+tome+10%2Caps%2C198&sr=8-1">
+<img class="zoom-effect" src="https://m.media-amazon.com/images/I/71INOK8ocuL._SL1418_.jpg" alt="Tome 10 de made in abyss">
+</a>
+    </div>
+  </div>
+
+  <div class="image-pair-container">
+    <div class="image-container">
+      <a href="https://www.amazon.fr/MADE-ABYSS-T11-Akihito-
+TSUKUSHI/dp/2377175430/ref=sr_1_1?__mk_fr_FR=%C3%85
+M%C3%85%C5%BD%C3%95%C3%91&crid=3ABAPV9OFMMRU
+&keywords=made+in+abyss+tome+11&qid=1704964571&spre
+fix=made+in+abyss+tome+11%2Caps%2C105&sr=8-1">
+<img class="zoom-effect" src="https://m.media-amazon.com/images/I/71W5zmpvL2L._SL1418_.jpg" alt="Tome 11 de made in abyss">
+</a>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+</section>
+<section id="section7">
+<h2><span style="font-size: 40px;">Illustrations du
+manga</h2>
+</br>
+
+ <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .swiper-container {
+      width: 80%;
+      height: 80%;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 60px; /* Coins arrondis pour une touche esthétique */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+      cursor: pointer;
+    }
+
+    .swiper-slide:hover {
+      transform: scale(1.1); /* Zoom au survol de la slide */
+    }
+	.centrei {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      text-align: center;
+}
+  </style>
+<body>
+<div class="centrei">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://images7.alphacoders.com/873/thumb-1920-873844.jpg" alt="Image 1">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://wallpaperaccess.com/full/1620305.jpg" alt="Image 2">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://images6.alphacoders.com/880/880845.jpg" alt="Image 3">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://wallpapercave.com/wp/wp2416044.jpg" alt="Image 4">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://wallpaperboat.com/wp-content/uploads/2019/09/13/21220/made-in-abyss-25.jpg" alt="Image 5">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/06/Made-in-Abyss-Feature-Image-.jpg" alt="Image 6">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://i.ytimg.com/vi/T9Fm-BSdLFA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgYShOMA8=&rs=AOn4CLColL16JuLQyTQmkPwfae44jmTOtA" alt="Image 7">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://u.kanobu.ru/editor/images/86/11694c59-235d-4589-a24d-cf2ecfbd3cd7.jpg" alt="Image 8">
+      </div>
+      <div class="swiper-slide" onclick="nextSlide()">
+        <img src="https://img.opencritic.com/game/13627/2BSjPZ3H.jpg" alt="Image 9">
+      </div>
+
+    </div>
+    <!-- Ajouter les autres images ici -->
+  </div>
+</div>
+</br>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'slide',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      spaceBetween: 150, // Ajustez cet espace selon vos préférences
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      loop: true,
+    });
+
+    function nextSlide() {
+      swiper.slideNext();
+    }
+  </script>
+</body>
+
+
+
+</section>
+
+
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+header {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 20px;
+}
+main {
+padding: 20px;
+}
+footer {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 10px;
+position: absolute;
+bottom: 0;
+width: 100%;
+}
+
+
+
+
+.titremia {
+text-align:center;
+color:gold;
+
+}
+h2{
+text-align:center;
+color:white;
+background:#994300;
+font-size:30px;
+}
+p{
+font-family:cursive;
+text-align:center;
+item-align: center;
+margin: auto; /* marges automatiques pour centrer
+horizontalement */
+color:white;
+margin: auto;
+}
+h3{
+text-align:center;
+font-family:arial;
+color:white
+}
+.body2 {
+width: 100%; /* largeur de 800 pixels */
+margin: auto; /* marges automatiques pour centrer
+horizontalement */
+text-align:center;
+item-align: center;
+}
+
+.ombre-texte {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Décalage X, Décalage Y, Flou, Couleur de l'ombre */
+  }
+
+h4 {
+width: 100%; /* largeur de 800 pixels */
+margin: auto; /* marges automatiques pour centrer
+horizontalement */
+background-color: transparent;
+/* couleur du fond */
+font-family: 'Courier New', monospace;
+color: #853a00;
+}
+h2{
+padding-left: 20px;
+padding-top: 5px;
+padding-bottom: 5px;
+border-radius: 100px;
+}
+/* Style pour le sommaire */
+nav {
+color: red;
+text-align: center; /* Centre les éléments horizontalement */
+padding: 10px;
+}
+nav a {
+display: inline-block; /* Permet de mettre des marges et de centrer verticalement */
+position: relative;
+color: red;
+text-decoration: none;
+text-align: center;
+margin-right: 15px;
+}
+
+nav {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    nav a:hover::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 255, 0.2); /* Couleur de fond de survol */
+      z-index: -1;
+    }
+
+</style>
+</head>
+</body>
+<header>
+<p>2024 "Manga : Made in abyss". Tous droits réservés de la rédaction du texte.</p>
+</header>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

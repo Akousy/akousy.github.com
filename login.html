@@ -6,36 +6,34 @@
 </head>
 <body>
   <h2>Mot de passe requis</h2>
-  <form onsubmit="return checkPassword(event)">
+  <form id="loginForm">
     <input type="password" id="password" placeholder="Mot de passe" required>
     <button type="submit">Entrer</button>
   </form>
 
   <script>
-    const validHash = "c2a71d7efbb1f36c5055f7a5dbbeabc16cd1fa3b9e1a0c3fbc35cc2f21f6d52d";
+    const validHash = "c2a71d7efbb1f36c5055f7a5dbbeabc16cd1fa3b9e1a0c3fbc35cc2f21f6d52d"; // SHA-256 de "monmotdepasse"
 
     async function sha256(str) {
-      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      const buffer = new TextEncoder().encode(str);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    async function checkPassword(event) {
-      event.preventDefault();
-      const input = document.getElementById("password").value;
-      const hash = await sha256(input);
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const password = document.getElementById("password").value;
+      const hash = await sha256(password);
 
       if (hash === validHash) {
+        alert("Mot de passe correct !");
         sessionStorage.setItem("auth", "ok");
         window.location.href = "/index.html";
       } else {
-        alert("Mot de passe incorrect");
+        alert("Mot de passe incorrect !");
       }
-    }
-
-    // Protection : rediriger si pas authentifié
-    if (sessionStorage.getItem("auth") === "ok" && location.pathname.endsWith("/login.html")) {
-      window.location.href = "/index.html";
-    }
+    });
   </script>
 </body>
 </html>

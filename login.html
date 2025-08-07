@@ -2,38 +2,33 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Connexion</title>
+  <title>Test Login</title>
 </head>
 <body>
-  <h2>Mot de passe requis</h2>
-  <form id="loginForm">
-    <input type="password" id="password" placeholder="Mot de passe" required>
-    <button type="submit">Entrer</button>
-  </form>
+  <h2>Test de mot de passe</h2>
+  <input type="password" id="password" placeholder="Entrez le mot de passe">
+  <button onclick="check()">Vérifier</button>
 
   <script>
-    const validHash = "c2a71d7efbb1f36c5055f7a5dbbeabc16cd1fa3b9e1a0c3fbc35cc2f21f6d52d"; // SHA-256 de "monmotdepasse"
+    const validHash = "c2a71d7efbb1f36c5055f7a5dbbeabc16cd1fa3b9e1a0c3fbc35cc2f21f6d52d";
 
     async function sha256(str) {
-      const buffer = new TextEncoder().encode(str);
-      const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      const buf = new TextEncoder().encode(str);
+      const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+      return Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    document.getElementById("loginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const password = document.getElementById("password").value;
-      const hash = await sha256(password);
-
+    async function check() {
+      const input = document.getElementById("password").value;
+      const hash = await sha256(input);
+      alert("Hash généré : " + hash);
+      alert("Hash attendu : " + validHash);
       if (hash === validHash) {
-        alert("Mot de passe correct !");
-        sessionStorage.setItem("auth", "ok");
-        window.location.href = "/index.html";
+        alert("✅ Mot de passe correct !");
       } else {
-        alert("Mot de passe incorrect !");
+        alert("❌ Mot de passe incorrect !");
       }
-    });
+    }
   </script>
 </body>
 </html>

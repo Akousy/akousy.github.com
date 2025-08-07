@@ -11,11 +11,18 @@
     <button type="submit">Entrer</button>
   </form>
   <script>
-    function checkPassword() {
+    const validHash = "c2a71d7efbb1f36c5055f7a5dbbeabc16cd1fa3b9e1a0c3fbc35cc2f21f6d52d";
+
+    async function checkPassword() {
       const pwd = document.getElementById("password").value;
-      if (pwd === "mot_de_passe") {
+      const enc = new TextEncoder();
+      const hashBuffer = await crypto.subtle.digest("SHA-256", enc.encode(pwd));
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+      if (hashHex === validHash) {
         sessionStorage.setItem("auth", "ok");
-        window.location.href = "/index.html"; // redirige vers la vraie page
+        window.location.href = "/index.html";
         return false;
       } else {
         alert("Mot de passe incorrect");

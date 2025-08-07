@@ -6,28 +6,35 @@
 </head>
 <body>
   <h2>Mot de passe requis</h2>
-  <form onsubmit="return checkPassword()">
-    <input type="password" id="password" placeholder="Mot de passe">
+  <form onsubmit="return checkPassword(event)">
+    <input type="password" id="password" placeholder="Mot de passe" required>
     <button type="submit">Entrer</button>
   </form>
+
   <script>
     const validHash = "c2a71d7efbb1f36c5055f7a5dbbeabc16cd1fa3b9e1a0c3fbc35cc2f21f6d52d";
 
-    async function checkPassword() {
-      const pwd = document.getElementById("password").value;
-      const enc = new TextEncoder();
-      const hashBuffer = await crypto.subtle.digest("SHA-256", enc.encode(pwd));
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
 
-      if (hashHex === validHash) {
+    async function checkPassword(event) {
+      event.preventDefault();
+      const input = document.getElementById("password").value;
+      const hash = await sha256(input);
+
+      if (hash === validHash) {
         sessionStorage.setItem("auth", "ok");
         window.location.href = "/index.html";
-        return false;
       } else {
         alert("Mot de passe incorrect");
-        return false;
       }
+    }
+
+    // Protection : rediriger si pas authentifié
+    if (sessionStorage.getItem("auth") === "ok" && location.pathname.endsWith("/login.html")) {
+      window.location.href = "/index.html";
     }
   </script>
 </body>

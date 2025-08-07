@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion</title>
+</head>
+<body>
+  <h2>Mot de passe requis</h2>
+  <form onsubmit="return checkPassword()">
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button type="submit">Entrer</button>
+  </form>
+  <script>
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      if (pwd === "mot_de_passe") {
+        sessionStorage.setItem("auth", "ok");
+        window.location.href = "/index.html"; // redirige vers la vraie page
+        return false;
+      } else {
+        alert("Mot de passe incorrect");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

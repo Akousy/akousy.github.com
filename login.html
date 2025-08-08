@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
 <h2>Mot de passe :</h2>
@@ -10,24 +11,10 @@
 <button onclick="check()">OK</button>
 
 <script>
-const validHash = "74efa6dcce3d4cb13d53356725c7c6298b149f4578cbed55a0a3cf8f06c320a1";
-
-async function sha256(str) {
-  const buf = new TextEncoder().encode(str);
-  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
-  return Array.from(new Uint8Array(hashBuf))
-              .map(b => b.toString(16).padStart(2, '0'))
-              .join('');
-}
-
-async function check(){
-  const input = document.getElementById("pass").value;
-  const hash = await sha256(input);
-  if(hash === validHash){
-    window.location.href = "index.html";
-  } else {
-    alert("Mauvais mot de passe");
-  }
+function check(){
+  const pass = document.getElementById("pass").value;
+  sessionStorage.setItem("sitePass", pass);
+  window.location.href = "index.html";
 }
 </script>
 </body>

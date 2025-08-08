@@ -1,109 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site en Maintenance</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Page protégée</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="background-animation"></div>
-    <div class="maintenance-card">
-      <h1>Maintenance en cours</h1>
-      <p>Notre site subit une mise à jour.<br>Nous serons de retour plus brillants que jamais !</p>
-      <div class="loader"></div>
-    </div>
-  </div>
+<div id="content">Déchiffrement...</div>
+
+<script>
+// Contenu HTML chiffré
+const encryptedData = "U2FsdGVkX19V2T9Z2k4C8+v5Y7yWAD80U5BzH18JS8RkZDzHCD01yeK1cJQ2Nfq6M/5h72pcMK6gD7fQ5n0iQg==";
+
+const pass = sessionStorage.getItem("sitePass");
+if(!pass){
+  window.location.href = "login.html";
+} else {
+  try {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, pass);
+    const text = bytes.toString(CryptoJS.enc.Utf8);
+    if(text){
+      document.getElementById("content").innerHTML = text;
+    } else {
+      document.getElementById("content").innerHTML = "Mot de passe incorrect.";
+    }
+  } catch {
+    document.getElementById("content").innerHTML = "Erreur de déchiffrement.";
+  }
+}
+</script>
 </body>
-<style>
-/* Reset de base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  font-family: 'Orbitron', sans-serif;
-  background: #0a0f1a;
-  overflow: hidden;
-}
-
-/* Fond animé : étoiles en mouvement */
-.background-animation {
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, #1a1f2b 20%, #000 100%);
-  animation: starfield 100s linear infinite;
-  z-index: 0;
-}
-
-@keyframes starfield {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-25%, -25%); }
-}
-
-/* Carte de maintenance */
-.container {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.maintenance-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  padding: 60px;
-  border-radius: 30px;
-  box-shadow: 0 0 60px rgba(0, 255, 255, 0.2);
-  text-align: center;
-  color: #ffffff;
-  max-width: 600px;
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.maintenance-card h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #00f7ff;
-  text-shadow: 0 0 20px #00f7ff;
-}
-
-.maintenance-card p {
-  font-size: 1.2rem;
-  color: #ddd;
-  margin-bottom: 40px;
-  line-height: 1.6;
-}
-
-/* Loader néon */
-.loader {
-  border: 6px solid rgba(0, 255, 255, 0.2);
-  border-top: 6px solid #00f7ff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  margin: auto;
-  animation: spin 1.2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-</style>
 </html>

@@ -1,3 +1,5 @@
-/*
-  Basic-Auth: monuser:monmotdepasse
+/login.html  /login.html  200
+/login       /login       200
+/static/*    /static/:splat 200
 
+/*    /login    200!    Role=authenticated
